@@ -14,3 +14,11 @@ This project uses the [UCI Online Retail II dataset](https://archive.ics.uci.edu
 The dataset contains approximately 1,067,371 transaction records from a UK-based online retailer between December 2009 and December 2011. It includes invoice numbers, product codes, product descriptions, quantities, invoice dates, unit prices, customer IDs, and customer countries.
 
 The dataset contains numerical, categorical, textual, and temporal features. Known data-quality issues include missing customer IDs, missing descriptions, canceled transactions, negative quantities, and duplicate rows.
+
+- **Repo Structure:**
+  - `README.md` — project overview, team members, dataset description, and setup instructions
+  - `data/README.md` — dataset download instructions; actual data will not be committed
+  - `.gitignore` — files and directories excluded from version control
+  - `notebooks/` — planned location for exploratory analysis notebooks
+  - `src/` — planned location for cleaning, preprocessing, and analysis code
+  - `reports/` — planned location for project documentation and final reports
