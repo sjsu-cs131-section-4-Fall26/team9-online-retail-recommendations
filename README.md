@@ -1,24 +1,32 @@
-# Team 9 — Online Retail II Recommendations
+# Team 9 - Online Retail II Recommendations
 
-## Team Members
+This repository contains the UNIX exploration and SED/AWK cleaning work for Project Assignment 2.
 
-- Kushan Mehta 
-- Kanishka Yadav 
+## Scripts
+
+Part 1:
+
+```bash
+bash run_pa1.sh path/to/online_retail_ii.tsv
+```
+
+Part 1 creates a sample, frequency tables, a Top-N list, previews, and logs.
+
+Part 2:
+
+```bash
+bash run_pa2.sh path/to/online_retail_ii.tsv
+```
+
+Part 2 creates its own `out/` and `logs/` directories, removes line-ending/trailing-whitespace issues with `sed`, and filters invalid rows with `awk`.
+
+## Important
+
+The full dataset is not stored in Git. Use the UCI download instructions and keep the local dataset outside the repository or in an ignored directory.
+
+## Team
+
+- Kushan Mehta
+- Kanishka Yadav
 - Sanjini Shukla
-- Lipi Himanshukumar Makwana 
-
-## Dataset
-
-This project uses the [UCI Online Retail II dataset](https://archive.ics.uci.edu/dataset/502/online+retail+ii).
-
-The dataset contains approximately 1,067,371 transaction records from a UK-based online retailer between December 2009 and December 2011. It includes invoice numbers, product codes, product descriptions, quantities, invoice dates, unit prices, customer IDs, and customer countries.
-
-The dataset contains numerical, categorical, textual, and temporal features. Known data-quality issues include missing customer IDs, missing descriptions, canceled transactions, negative quantities, and duplicate rows.
-
-- **Repo Structure:**
-  - `README.md` — project overview, team members, dataset description, and setup instructions
-  - `data/README.md` — dataset download instructions; actual data will not be committed
-  - `.gitignore` — files and directories excluded from version control
-  - `notebooks/` — planned location for exploratory analysis notebooks
-  - `src/` — planned location for cleaning, preprocessing, and analysis code
-  - `reports/` — planned location for project documentation and final reports
+- Lipi Himanshukumar Makwana
