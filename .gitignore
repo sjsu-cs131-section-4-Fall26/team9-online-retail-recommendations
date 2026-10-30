@@ -1,0 +1,22 @@
+# Full datasets and downloaded archives
+*.xlsx
+*.xls
+*.csv
+*.tsv
+*.zip
+data/raw/
+
+# Generated Part 2 outputs (the instructor generates these by running run_pa2.sh)
+out/
+output/
+results/
+logs/
+
+# Keep only the tiny Part 1 sample if the team chooses to commit it.
+!data/samples/
+!data/samples/online_retail_sample.tsv
+
+# Local/editor files
+.DS_Store
+*.swp
+*.swo
