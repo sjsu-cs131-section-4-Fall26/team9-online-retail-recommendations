@@ -11,7 +11,7 @@
 ## Links
 
 - GitHub repository: https://github.com/sjsu-cs131-section-4-Fall26/team9-online-retail-recommendations
-- PM board: `[PASTE THE ACTUAL PM BOARD LINK HERE]`
+- PM board: `https://docs.google.com/spreadsheets/d/1DggUy09TsvTV08hRcFxSPFZYUdql4mYG6N8QpfkBr20/edit?usp=sharing`
 - Part 1 entry script: `./run_pa1.sh`
 - Part 2 entry script: `./run_pa2.sh`
 - Pull requests: `https://github.com/sjsu-cs131-section-4-Fall26/team9-online-retail-recommendations/pull/1`
