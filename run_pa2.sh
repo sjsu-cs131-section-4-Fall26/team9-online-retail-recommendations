@@ -46,7 +46,7 @@ SAMPLE_FILE="out/pa2_before_after_sample.txt"
   # Rules: nonempty invoice/stock code, positive integer quantity, positive price.
   awk -F '\t' -v OFS='\t' '
     NR == 1 { print; next }
-    NF >= 8 &&
+    NF == 8 &&
     $1 != "" &&
     $2 != "" &&
     $4 ~ /^[0-9]+$/ && $4 > 0 &&

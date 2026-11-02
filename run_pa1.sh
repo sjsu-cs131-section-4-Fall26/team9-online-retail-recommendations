@@ -50,7 +50,11 @@ echo "== Stock-code frequency table ==" | tee -a out/pa1_run.log
 tail -n +2 "$INPUT" | cut -f2 | sort | uniq -c | sort -nr | tee out/freq_stockcode.txt
 
 echo "== Top 20 products by transaction-row count ==" | tee -a out/pa1_run.log
-tail -n +2 "$INPUT" | cut -f2 | sort | uniq -c | sort -nr | head -n 20 | tee out/top20_stockcodes.txt
+head -n 20 out/freq_stockcode.txt | tee out/top20_stockcodes.txt
+
+echo "== Skinny Table ==" | tee -a out/pa1_run.log
+cut -f1,2,4,7,8 "$INPUT" > out/skinny_table.tsv
+head -n 5 out/skinny_table.tsv | tee -a out/pa1_run.log
 
 echo "== Cancellation examples using grep -i ==" | tee -a out/pa1_run.log
 grep -i '^C' "$INPUT" | head -n 10 | tee out/cancellation_examples.tsv || true
