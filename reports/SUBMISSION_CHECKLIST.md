@@ -2,34 +2,33 @@
 
 ## Before GitHub upload
 
-- [ ] Confirm the working input file is TSV and the header order matches the scripts.
-- [ ] Run `bash run_pa1.sh INPUT`.
-- [ ] Read `out/freq_country.txt`.
-- [ ] Read `out/freq_stockcode.txt`.
-- [ ] Read `out/top20_stockcodes.txt`.
-- [ ] Copy real numbers and findings into `REPORT_DRAFT.md`.
-- [ ] Run `bash run_pa2.sh INPUT`.
-- [ ] Confirm `out/pa2_cleaned.tsv` begins with the header.
-- [ ] Confirm `logs/pa2_run.log` exists.
-- [ ] Run `bash -n run_pa1.sh run_pa2.sh`.
-- [ ] Make scripts executable with `chmod +x run_pa1.sh run_pa2.sh`.
+- [x] Confirm the working input file is TSV and the header order matches the scripts.
+- [x] Run `bash run_pa1.sh INPUT`.
+- [x] Read `out/freq_country.txt`.
+- [x] Read `out/freq_stockcode.txt`.
+- [x] Read `out/top20_stockcodes.txt`.
+- [x] Copy real numbers and findings into `reports/PROJECT_ASSIGNMENT_2_REPORT.md`.
+- [x] Run `bash run_pa2.sh INPUT`.
+- [x] Confirm `out/pa2_cleaned.tsv` begins with the header.
+- [x] Confirm `logs/pa2_run.log` exists.
+- [x] Run `bash -n run_pa1.sh run_pa2.sh`.
+- [x] Make scripts executable with `chmod +x run_pa1.sh run_pa2.sh`.
 
 ## GitHub
 
-- [ ] Commit scripts, README, Data Card, report draft, and small Part 1 sample if required.
-- [ ] Do not commit the full dataset.
-- [ ] Do not commit Part 2 output folders.
-- [ ] Use feature branches.
-- [ ] Open pull requests.
+- [x] Commit scripts, README, Data Card, report, checklist, and the small Part 1 sample.
+- [x] Confirm the full dataset is not committed.
+- [x] Confirm Part 2 output folders are not committed.
+- [x] Use a feature branch.
+- [x] Open pull requests.
 - [ ] Obtain at least one peer review per PR.
-- [ ] Merge only after review.
+- [ ] Merge PR #2 after review.
 
-## PM board
+## PM Board
 
-- [ ] Replace every Part 2 `Name` placeholder.
-- [ ] Replace every `m/d/yyyy` start date.
-- [ ] Update statuses.
-- [ ] Add DoD notes.
+- [x] Update the official Google Sheets board with owners and dates.
+- [x ] Update all statuses.
+- [x] Add Definitions of Done.
 - [ ] Add repository, PR, and report links.
 
 ## Canvas

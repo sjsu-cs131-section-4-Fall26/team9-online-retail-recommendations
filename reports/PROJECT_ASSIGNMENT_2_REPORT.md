@@ -3,24 +3,24 @@
 ## Executive Summary
 
 - We analyzed the UCI Online Retail II dataset containing 1,067,371 transaction records and eight columns.
-- Part 1 used UNIX streams, pipes, `cut`, `sort`, `uniq`, `wc`, `grep`, `tee`, output redirection, and `script`.
+- Part 1 used UNIX streams, pipes, `cut`, `sort`, `uniq`, `wc`, `grep`, `tee`, redirection, and `script`.
 - The dataset is strongly concentrated in the United Kingdom, which contains 981,330 transaction rows.
-- Stock code 85123A is the most frequent product code, appearing in 5,829 transaction rows.
+- Stock code `85123A` is the most frequent product code, appearing in 5,829 transaction rows.
 - Part 2 used `sed` and `awk` to create a reproducible cleaned dataset containing 1,041,671 usable transaction records.
+
 
 ## Links
 
-- GitHub repository: https://github.com/sjsu-cs131-section-4-Fall26/team9-online-retail-recommendations
-- PM board: `https://docs.google.com/spreadsheets/d/1DggUy09TsvTV08hRcFxSPFZYUdql4mYG6N8QpfkBr20/edit?usp=sharing`
-- Part 1 entry script: `./run_pa1.sh`
-- Part 2 entry script: `./run_pa2.sh`
-- Pull requests: `https://github.com/sjsu-cs131-section-4-Fall26/team9-online-retail-recommendations/pull/1`
+- GitHub repository: [Team 9 repository](https://github.com/sjsu-cs131-section-4-Fall26/team9-online-retail-recommendations)
+- PM board: [Google Sheets PM board](https://docs.google.com/spreadsheets/d/1DggUy09TsvTV08hRcFxSPFZYUdql4mYG6N8QpfkBr20/edit?usp=sharing)
+- Part 1 script: [run_pa1.sh](https://github.com/sjsu-cs131-section-4-Fall26/team9-online-retail-recommendations/blob/main/run_pa1.sh)
+- Part 2 script: [run_pa2.sh](https://github.com/sjsu-cs131-section-4-Fall26/team9-online-retail-recommendations/blob/main/run_pa2.sh)
+- Pull request 1: [Kushan implementation PR](https://github.com/sjsu-cs131-section-4-Fall26/team9-online-retail-recommendations/pull/1)
+- Pull request 2: [Final updates PR](https://github.com/sjsu-cs131-section-4-Fall26/team9-online-retail-recommendations/pull/2)
 
 ## Dataset and Data Card
 
-The project uses the UCI Online Retail II dataset:
-
-https://archive.ics.uci.edu/dataset/502/online+retail+ii
+The project uses the [UCI Online Retail II dataset](https://archive.ics.uci.edu/dataset/502/online+retail+ii).
 
 The original workbook contained two sheets:
 
@@ -40,7 +40,7 @@ Customer ID
 Country
 ```
 
-The full dataset and generated outputs are excluded from Git. The scripts receive the TSV path as their only input.
+The full dataset is stored outside Git. The required 1,000-record sample is committed under `data/samples/`. Generated `out/` and `logs/` directories are excluded from Git.
 
 Important quality issues include missing Customer IDs, canceled invoices, negative or zero quantities, duplicate rows, and missing or inconsistent product descriptions.
 
@@ -49,22 +49,34 @@ Important quality issues include missing Customer IDs, canceled invoices, negati
 Part 1 was run with:
 
 ```bash
-bash run_pa1.sh ../data/raw/online_retail_II.tsv
+bash run_pa1.sh ../online_retail_II_combined.tsv
 ```
 
 The script verified the input, counted rows, previewed the header, and created a random 1,000-record sample while preserving the header. The sample contains 1,001 lines total.
 
-The frequency tables used pipelines such as:
+The country frequency table used:
 
 ```bash
 tail -n +2 "$INPUT" | cut -f8 | sort | uniq -c | sort -nr
 ```
 
-The script also demonstrated pipes, `>`, `>>`, `2>`, `tee`, `grep -i`, `grep -v`, and `script` session capture.
+The stock-code frequency table used the same pipeline with field 2. The script also demonstrated `grep -i`, `grep -v`, `tee`, `>`, `>>`, `2>`, pipes, and `script` session capture.
+
+The Part 1 skinny table contains:
+
+```text
+Invoice, StockCode, Quantity, Customer ID, Country
+```
+
+and is saved as:
+
+```text
+out/skinny_table.tsv
+```
 
 ## Part 1 Findings
 
-### Country frequency table
+### Country Frequency Table
 
 | Country | Transaction rows |
 |---|---:|
@@ -79,9 +91,11 @@ The script also demonstrated pipes, `>`, `>>`, `2>`, `tee`, `grep -i`, `grep -v`
 | Portugal | 2,620 |
 | Australia | 1,913 |
 
-The United Kingdom accounts for the overwhelming majority of transaction rows, so overall patterns primarily describe UK purchasing behavior.
+The full country frequency table is saved in `out/freq_country.txt`. The report displays the top 10 countries for readability. The United Kingdom accounts for the overwhelming majority of transaction rows, so overall patterns primarily describe UK purchasing behavior.
 
-### Top stock-code frequency table
+### Top Stock-Code Frequency Table
+
+The full stock-code frequency table is saved in `out/freq_stockcode.txt`. The Top-20 output is saved in `out/top20_stockcodes.txt`.
 
 | Rank | Stock code | Transaction rows |
 |---:|---|---:|
@@ -96,9 +110,9 @@ The United Kingdom accounts for the overwhelming majority of transaction rows, s
 | 9 | 22197 | 2,549 |
 | 10 | 22383 | 2,540 |
 
-Stock code 85123A is the most frequent product code. A small group of products appears very frequently and may be useful for future recommendation analysis.
+Stock code `85123A` is the most frequent product code. A small group of products appears very frequently and may be useful for future recommendation analysis.
 
-### Data-quality findings
+### Data-Quality Findings
 
 - Missing Customer IDs: 243,007 rows.
 - Cancellation rows identified by invoices beginning with `C`: 19,494.
@@ -110,12 +124,18 @@ Stock code 85123A is the most frequent product code. A small group of products a
 Part 2 was run with:
 
 ```bash
-bash run_pa2.sh ../data/raw/online_retail_II.tsv
+bash run_pa2.sh ../online_retail_II_combined.tsv
 ```
 
-The SED stage removed carriage-return characters and trailing whitespace while preserving meaningful spaces inside product descriptions.
+The `sed` stage removed carriage-return characters and trailing whitespace while preserving meaningful spaces inside product descriptions.
 
-The AWK stage preserved the header and retained rows with at least eight fields, a nonempty invoice, a nonempty stock code, a positive integer quantity, and a positive price.
+The `awk` stage preserved the header and retained rows with:
+
+- Exactly eight fields.
+- A nonempty invoice.
+- A nonempty stock code.
+- A positive integer quantity.
+- A positive price.
 
 The results were:
 
@@ -125,7 +145,9 @@ The results were:
 | After SED normalization | 1,067,372 |
 | After AWK filtering | 1,041,672 |
 
-The cleaned output contains 1,041,671 transaction records plus the header. Therefore, 25,700 records were removed by the quality filter. Every cleaned row contains exactly eight fields, and no cleaned row has a nonpositive quantity or price.
+The cleaned output contains 1,041,671 transaction records plus the header. Therefore, 25,700 transaction rows were removed by the quality filter.
+
+Validation confirmed that every cleaned row contains exactly eight fields and that no cleaned row has a nonpositive quantity or price.
 
 The script uses `set -euo pipefail`, validates the input, creates `out/` and `logs/`, uses relative paths, and writes a run log.
 
@@ -141,10 +163,10 @@ The dataset is highly concentrated in the United Kingdom, so country comparisons
 
 Which products generate the highest total revenue after removing cancellations, returns, duplicate rows, and transactions with missing Customer IDs?
 
-## Stand-up Summary
+## Stand-Up Summary
 
 1. Kushan verified the dataset, converted the Excel workbook to TSV, and completed the Data Card.
-2. Part 1 generated a 1,000-record sample, two frequency tables, a Top-20 list, and a session log.
+2. Part 1 generated a 1,000-record sample, two frequency tables, a Top-20 list, and a skinny table.
 3. The team identified missing Customer IDs, cancellations, nonpositive quantities, and duplicate rows.
-4. Part 2 used SED for normalization and AWK for quality filtering.
-5. The remaining work is to commit the scripts, complete the PM board, obtain pull-request review, and submit the report, repository link, and board link.
+4. Part 2 used `sed` for normalization and `awk` for quality filtering.
+5. The remaining work is final peer review, PM-board verification, Google Doc preparation, and Canvas submission.
