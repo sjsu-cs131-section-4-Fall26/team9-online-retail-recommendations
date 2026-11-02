@@ -1,81 +1,181 @@
-# Start Here - Beginner Instructions
+# Start Here - Project Assignment 2
 
-## What you have
+This repository contains the completed Part 1 and Part 2 shell pipelines for the UCI Online Retail II dataset.
 
-This folder contains the files for both parts of Project Assignment 2. You still need to run them on the team’s real TSV dataset and paste the real findings into `REPORT_DRAFT.md`.
+The full dataset is not committed to Git. It is stored outside the repository on the IBM server. The repository contains the scripts, documentation, and required 1,000-record sample.
 
-## Step 1: Put the files in the repository
+## Repository Contents
 
-Copy these files into the team repository:
+Important files include:
 
 ```text
 README.md
-DATA_CARD.md
-REPORT_DRAFT.md
-PM_BOARD_UPDATES.md
-SUBMISSION_CHECKLIST.md
+reports/DATA_CARD.md
+reports/PROJECT_ASSIGNMENT_2_REPORT.md
+reports/PM_BOARD_UPDATES.md
+reports/SUBMISSION_CHECKLIST.md
 run_pa1.sh
 run_pa2.sh
+data/samples/online_retail_sample.tsv
 .gitignore
 ```
 
-## Step 2: Find the dataset
+## Input Dataset
 
-The scripts require a text file, preferably TSV. Do not give them the original Excel workbook directly. The file should begin with:
+The scripts require one combined tab-separated file created from both Online Retail II workbook sheets.
+
+The verified full dataset contains:
+
+- 1,067,372 lines including the header
+- 1,067,371 transaction records
+- 8 tab-separated columns
+
+The header order is:
 
 ```text
 Invoice<TAB>StockCode<TAB>Description<TAB>Quantity<TAB>InvoiceDate<TAB>Price<TAB>Customer ID<TAB>Country
 ```
 
-## Step 3: Run Part 1
+Example IBM input path:
 
-From the repository directory, run:
-
-```bash
-bash run_pa1.sh /path/to/online_retail_ii.tsv
+```text
+../online_retail_II_combined.tsv
 ```
 
-Then inspect:
+Do not pass the Excel workbook directly to the shell scripts. Do not use the generated sample as the input file.
+
+## Part 1
+
+Run Part 1 from the repository directory:
+
+```bash
+bash run_pa1.sh ../online_retail_II_combined.tsv
+```
+
+Part 1 creates:
+
+```text
+data/samples/online_retail_sample.tsv
+out/freq_country.txt
+out/freq_stockcode.txt
+out/top20_stockcodes.txt
+out/skinny_table.tsv
+out/cancellation_examples.tsv
+out/non_cancellation_preview.tsv
+out/row_count.txt
+logs/project2_part1_session.txt
+```
+
+Inspect the outputs:
 
 ```bash
 cat out/freq_country.txt
 cat out/freq_stockcode.txt
 cat out/top20_stockcodes.txt
+head out/skinny_table.tsv
 cat out/row_count.txt
+wc -l data/samples/online_retail_sample.tsv
 ```
 
-Copy the important numbers and the top rows into `REPORT_DRAFT.md`.
+The sample should contain 1,001 lines: one header plus 1,000 records.
 
-## Step 4: Run Part 2
+## Part 2
+
+Run Part 2 using the same full TSV:
 
 ```bash
-bash run_pa2.sh /path/to/online_retail_ii.tsv
+bash run_pa2.sh ../online_retail_II_combined.tsv
 ```
 
-Check that these files exist:
+Part 2 creates:
 
-```bash
-ls -l out/pa2_cleaned.tsv out/pa2_sed_normalized.tsv logs/pa2_run.log
-head out/pa2_cleaned.tsv
+```text
+out/pa2_sed_normalized.tsv
+out/pa2_cleaned.tsv
+out/pa2_before_after_sample.txt
+logs/pa2_run.log
 ```
 
-The first line of `pa2_cleaned.tsv` must still be the header.
-
-## Step 5: Check syntax
+Check the outputs:
 
 ```bash
-bash -n run_pa1.sh run_pa2.sh
+ls -lh out/pa2_sed_normalized.tsv
+ls -lh out/pa2_cleaned.tsv
+ls -lh out/pa2_before_after_sample.txt
+ls -lh logs/pa2_run.log
+head -n 1 out/pa2_cleaned.tsv
+```
+
+The first line of `out/pa2_cleaned.tsv` must remain the header.
+
+Validate the cleaned file:
+
+```bash
+awk -F '\t' 'NR > 1 && NF != 8 {bad++} END {print "Bad field-count rows:", bad+0}' out/pa2_cleaned.tsv
+```
+
+```bash
+awk -F '\t' 'NR > 1 && ($4 <= 0 || $6 <= 0) {bad++} END {print "Invalid quantity/price rows:", bad+0}' out/pa2_cleaned.tsv
+```
+
+Both commands should report zero.
+
+## Syntax and Permissions
+
+Run each command separately:
+
+```bash
+bash -n run_pa1.sh
+```
+
+```bash
+bash -n run_pa2.sh
+```
+
+```bash
 chmod +x run_pa1.sh run_pa2.sh
 ```
 
-## Step 6: Git workflow
+## Git and Review Workflow
 
-Create a branch, commit the files, push the branch, and open a pull request. Have one teammate review it. Do not commit the full dataset or Part 2 output folders.
+- Work on feature branches.
+- Do not commit the full dataset.
+- Do not commit `out/` or `logs/`.
+- Commit the required sample under `data/samples/`.
+- Open pull requests for changes.
+- Obtain peer review before merging.
+- Squash-merge only after review and checks pass.
 
-## Step 7: Finish the report
+## Documentation and PM Board
 
-Replace every bracketed placeholder in `REPORT_DRAFT.md` with actual values from the generated output files. Put the report into Google Docs, enable comments, and add the repository, board, script, and PR links.
+Update:
 
-## Step 8: Update the board and submit
+```text
+reports/PROJECT_ASSIGNMENT_2_REPORT.md
+reports/PM_BOARD_UPDATES.md
+reports/SUBMISSION_CHECKLIST.md
+```
 
-Use `PM_BOARD_UPDATES.md` to replace the Part 2 `Name` placeholders, update statuses and dates, and add the Definition-of-Done notes. Then submit the Google Doc, repository link, and board link on Canvas.
+The Google Sheets PM board is the official live board. Update it with owners, statuses, dates, Definitions of Done, and repository, PR, and Google Doc links.
+
+The Google Doc sprint report must include:
+
+- Executive summary
+- Methods
+- Two frequency tables
+- Top-N findings
+- Skinny-table reference
+- Data-quality limitations
+- Next PM question
+- Repository, PM board, script, and PR links
+- Five-line stand-up summary
+
+Enable comments on the Google Doc before submission.
+
+## Canvas Submission
+
+Submit:
+
+- Google Doc sprint report link
+- GitHub repository link
+- Google Sheets PM board link
