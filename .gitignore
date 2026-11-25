@@ -20,3 +20,23 @@ logs/
 .DS_Store
 *.swp
 *.swo
+
+# ---- Project Assignment 3 ----
+# Generated locally; never committed
+pa3/data/parquet/
+pa3/data/dev_sample_20pct/
+*.parquet
+spark-warehouse/
+metastore_db/
+derby.log
+.ipynb_checkpoints/
+
+# Re-include only the required PA3 deliverables (overrides global *.csv, *.tsv, out/)
+!pa3/out/
+pa3/out/*
+!pa3/out/analysis_1.csv
+!pa3/out/analysis_2.csv
+!pa3/out/quality_checks.csv
+!pa3/out/sample_comparison.csv
+!pa3/out/benchmark.csv
+!pa3/data/sample/online_retail_sample.tsv
