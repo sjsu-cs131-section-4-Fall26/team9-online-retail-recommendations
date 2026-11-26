@@ -1,0 +1,11 @@
+check_id,check_name,rule,rows_affected,pct_of_rows,action,overlap_note
+Q0,total_rows,All rows read from the input,1067371,100.0,Population for every percentage below,
+Q1,cast_failures,"Raw quantity, price, or invoice_date present but null after casting",0,0.0,Asserted to be 0 (Section 3a),
+Q2,missing_customer_id,customer_id is null (empty field in the TSV),243007,22.77,Kept; flag_missing_customer = true,"6,885 of these rows also fail Q3"
+Q3,nonpositive_or_missing_qty_price,quantity or price is null or <= 0,25700,2.41,Kept; flag_bad_qty_price = true,"6,885 of these rows also fail Q2"
+Q4,overlap_q2_and_q3,Rows failing both Q2 and Q3,6885,0.65,Informational,Counted in both Q2 and Q3
+Q5,union_q2_or_q3,Rows failing Q2 or Q3 (at least one),261822,24.53,Informational,Q2 + Q3 - Q4; not Q2 + Q3
+Q6,cancellation_rows,invoice starts with 'C',19494,1.83,Kept; is_cancellation = true,"19,493 of these rows also fail Q3"
+Q7,exact_duplicate_extra_copies,Rows identical in all 8 columns to an earlier row,34335,3.22,Kept; cannot prove true duplicates without a line-item ID,"Spread over 32,907 duplicate groups (PA2 reported the group count)"
+Q8,rows_sharing_invoice_stock_code,"(invoice, stock_code) appears on more than one row",88585,8.3,"Informational; shows (invoice, stock_code) is not a key",Includes all Q7 rows
+Q9,stock_code_edge_whitespace,stock_code has leading or trailing whitespace,1,0.0,Kept unchanged to match PA2 grouping,
