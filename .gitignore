@@ -17,6 +17,7 @@ logs/
 !data/samples/online_retail_sample.tsv
 
 # Local/editor files
+.venv/
 .DS_Store
 *.swp
 *.swo

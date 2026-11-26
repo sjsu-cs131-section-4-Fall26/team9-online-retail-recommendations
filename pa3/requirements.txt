@@ -1,0 +1,8 @@
+# PA3 notebook environment: Python 3.12 and Java 17 or 21 (Spark 4 does not support newer Java).
+# Setup and run steps are in the repository README (Project Assignment 3 section).
+pyspark>=4.0,<5
+duckdb>=1.3
+pandas>=2.2,<3   # PySpark 4 does not fully support pandas 3 yet
+pyarrow>=15
+ipykernel
+notebook
