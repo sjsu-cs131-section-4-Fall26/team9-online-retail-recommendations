@@ -1,0 +1,48 @@
+fraction,seed,group_column,group_value,population_rows,sample_rows,population_pct,sample_pct,pct_point_diff,in_sample
+0.2,131,country,United Kingdom,981330,196213,91.939,91.9,-0.039,True
+0.2,131,country,EIRE,17866,3515,1.6738,1.6463,-0.0275,True
+0.2,131,country,Germany,17624,3520,1.6512,1.6487,-0.0025,True
+0.2,131,country,France,14330,2877,1.3426,1.3475,0.0049,True
+0.2,131,country,Netherlands,5140,1060,0.4816,0.4965,0.0149,True
+0.2,131,country,Spain,3811,752,0.357,0.3522,-0.0048,True
+0.2,131,country,Switzerland,3189,647,0.2988,0.303,0.0042,True
+0.2,131,country,Belgium,3123,647,0.2926,0.303,0.0104,True
+0.2,131,country,Portugal,2620,537,0.2455,0.2515,0.006,True
+0.2,131,country,Australia,1913,397,0.1792,0.1859,0.0067,True
+0.2,131,country,Channel Islands,1664,335,0.1559,0.1569,0.001,True
+0.2,131,country,Italy,1534,333,0.1437,0.156,0.0123,True
+0.2,131,country,Norway,1455,287,0.1363,0.1344,-0.0019,True
+0.2,131,country,Sweden,1364,282,0.1278,0.1321,0.0043,True
+0.2,131,country,Cyprus,1176,229,0.1102,0.1073,-0.0029,True
+0.2,131,country,Finland,1049,196,0.0983,0.0918,-0.0065,True
+0.2,131,country,Austria,938,175,0.0879,0.082,-0.0059,True
+0.2,131,country,Denmark,817,178,0.0765,0.0834,0.0069,True
+0.2,131,country,Unspecified,756,148,0.0708,0.0693,-0.0015,True
+0.2,131,country,Greece,663,131,0.0621,0.0614,-0.0007,True
+0.2,131,country,Japan,582,131,0.0545,0.0614,0.0069,True
+0.2,131,country,Poland,535,131,0.0501,0.0614,0.0113,True
+0.2,131,country,USA,535,104,0.0501,0.0487,-0.0014,True
+0.2,131,country,United Arab Emirates,500,107,0.0468,0.0501,0.0033,True
+0.2,131,country,Israel,371,79,0.0348,0.037,0.0022,True
+0.2,131,country,Hong Kong,364,71,0.0341,0.0333,-0.0008,True
+0.2,131,country,Singapore,346,65,0.0324,0.0304,-0.002,True
+0.2,131,country,Malta,299,60,0.028,0.0281,0.0001,True
+0.2,131,country,Iceland,253,53,0.0237,0.0248,0.0011,True
+0.2,131,country,Canada,228,35,0.0214,0.0164,-0.005,True
+0.2,131,country,Lithuania,189,38,0.0177,0.0178,0.0001,True
+0.2,131,country,RSA,169,42,0.0158,0.0197,0.0039,True
+0.2,131,country,Bahrain,126,34,0.0118,0.0159,0.0041,True
+0.2,131,country,Brazil,94,19,0.0088,0.0089,0.0001,True
+0.2,131,country,Thailand,76,21,0.0071,0.0098,0.0027,True
+0.2,131,country,Korea,63,13,0.0059,0.0061,0.0002,True
+0.2,131,country,European Community,61,11,0.0057,0.0052,-0.0005,True
+0.2,131,country,Lebanon,58,6,0.0054,0.0028,-0.0026,True
+0.2,131,country,West Indies,54,7,0.0051,0.0033,-0.0018,True
+0.2,131,country,Bermuda,34,4,0.0032,0.0019,-0.0013,True
+0.2,131,country,Nigeria,32,6,0.003,0.0028,-0.0002,True
+0.2,131,country,Czech Republic,30,8,0.0028,0.0037,0.0009,True
+0.2,131,country,Saudi Arabia,10,3,0.0009,0.0014,0.0005,True
+0.2,131,flag_missing_customer,false,824364,164799,77.2331,77.1867,-0.0464,True
+0.2,131,flag_missing_customer,true,243007,48708,22.7669,22.8133,0.0464,True
+0.2,131,is_cancellation,false,1047877,209604,98.1736,98.172,-0.0016,True
+0.2,131,is_cancellation,true,19494,3903,1.8264,1.828,0.0016,True
