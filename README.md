@@ -53,6 +53,16 @@ Run:
 bash run_pa1.sh /path/to/online_retail_II_combined.tsv
 ```
 
+Run Part 1 on Linux (for example, the IBM server). It uses the GNU versions of `script -c` and `shuf`, which
+macOS does not provide. Part 2 runs on both Linux and macOS.
+
+Each run draws a new random 1,000-record sample and overwrites the committed
+`data/samples/online_retail_sample.tsv`. To keep the committed sample, restore it after running Part 1:
+
+```bash
+git checkout -- data/samples/online_retail_sample.tsv
+```
+
 Part 1 generates:
 
 - A header-preserving 1,000-record sample
@@ -155,6 +165,8 @@ of CPU cores, so its row count can differ slightly between machines; every other
 - PA3 Parquet files, Spark logs, and the `.venv/` environment are excluded from Git; only the five PA3 result CSVs in `pa3/out/` are committed.
 - Generated `out/` and `logs/` directories are excluded from Git.
 - The required 1,000-record sample is committed under `data/samples/` (PA2) and `pa3/data/sample/` (PA3).
+- `.gitattributes` keeps every text file in LF line endings, so the shell scripts and TSV files work the same on
+  macOS, Linux, and Windows checkouts.
 - Changes are developed on feature branches.
 - Pull requests require peer review before merging.
 

@@ -1,0 +1,12 @@
+# Store and check out text files with LF line endings on every OS, so shell scripts
+# and TSV/CSV files behave the same on macOS, Linux (IBM server), and Windows.
+* text=auto eol=lf
+
+# Shell scripts must always be LF or bash fails ("set: pipefail: invalid option name").
+*.sh text eol=lf
+
+# Binary files: never convert.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.parquet binary
