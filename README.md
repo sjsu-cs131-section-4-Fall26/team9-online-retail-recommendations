@@ -143,6 +143,27 @@ The notebook uses the first input it finds:
 3. The committed 1,000-row sample, `pa3/data/sample/online_retail_sample.tsv`. A sample run writes to
    `pa3/out/sample_run/` so it never overwrites the full-data outputs.
 
+### Run on the committed sample
+
+Without the full dataset, the notebook falls back to the committed sample automatically. If the full TSV is in one
+of the default locations, point `PA3_DATA_PATH` at the sample to force a sample run:
+
+```bash
+cd pa3/notebooks
+export PA3_DATA_PATH="$PWD/../data/sample/online_retail_sample.tsv"
+```
+
+A sample run reads 1,000 rows and runs every check except the ones that only apply to the full data (the PA2
+Top 20 comparison and the Bermuda hand check). Its outputs go to `pa3/out/sample_run/`, which is gitignored.
+
+### Run without opening Jupyter
+
+To run the whole notebook from a terminal and save the outputs into it (from `pa3/notebooks/`):
+
+```bash
+jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.kernel_name=pa3-pyspark pa3_pyspark.ipynb
+```
+
 ### Outputs
 
 Full-data results are written to `pa3/out/` and committed:
