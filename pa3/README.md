@@ -95,9 +95,11 @@ To regenerate any output, run the notebook and see the section listed above.
 - **Sanjini Shukla:** Used Codex to understand what Sections 9-12 required and how grouped
   aggregations, window functions, and DuckDB queries work in this project. Reviewed and ran the
   code and checked the outputs.
-- **Lipi Himanshukumar Makwana:** [TO BE COMPLETED BY LIPI]
-- **Kushan Mehta:** [TO BE COMPLETED - Kushan to confirm. Suggested wording: Used Claude to draft
-  the Section 13 chart code, the Section 14 findings, and the technical report. Checked every
-  number against analysis_1.csv, analysis_2.csv, and quality_checks.csv.]
+- **Lipi Himanshukumar Makwana:** Used ChatGPT to structure and edit initial drafts of Section 1
+  (project goal, analysis questions, and schema description) and to check that they matched the
+  assignment rubric.
+- **Kushan Mehta:** Used Claude only for minor code formatting in Section 13 and phrasing polish in
+  Section 14 and the technical report. Manually verified all numerical results against
+  analysis_1.csv, analysis_2.csv, and quality_checks.csv.
 
 Every team member should be able to explain the submitted work.
