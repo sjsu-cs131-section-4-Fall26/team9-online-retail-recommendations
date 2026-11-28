@@ -1,0 +1,58 @@
+CS 131 Project Assignment 3 - Submission Summary (Team 9)
+Dataset: UCI Online Retail II (1,067,371 invoice lines)
+
+Files included in pa3/
+
+README.md
+  How to run the notebook from the committed sample, the rules used in the analyses,
+  the handoff table for every output, and the AI-use disclosure.
+
+submission_summary.txt
+  This file.
+
+requirements.txt
+  Python packages needed to run the notebook.
+
+notebooks/pa3_pyspark.ipynb
+  The main notebook. Section 1: project goal, questions, and data description.
+  Sections 2-7: read the data, cast types, derived columns, quality checks, Parquet write
+  and read-back. Section 8: 20% development sample and comparison. Sections 9-10:
+  Analysis 1 and Analysis 2. Sections 11-12: DuckDB comparison and benchmark.
+  Section 13: chart. Section 14: findings and limitations. Section 15: AI-use disclosure.
+
+data/sample/online_retail_sample.tsv
+  The committed 1,000-row sample so the notebook can run without the full dataset.
+
+docs/technical_report.pdf
+  Concise report: project goal, preparation steps, quality table, results of Analysis 1
+  and 2, three findings, one labeled chart, a limitation, the development sample and
+  PySpark/DuckDB comparison, and the handoff table.
+
+out/analysis_1.csv
+  Analysis 1: how many invoice lines each stock code appears on (5,305 rows; columns
+  stock_code, count), ordered by count descending, then stock_code ascending.
+
+out/analysis_2.csv
+  Analysis 2: the top three stock codes in each country (129 rows; columns country,
+  stock_code, count, rank), computed with a window function.
+
+out/quality_checks.csv
+  Data-quality checks (10 rows): total rows, cast failures, missing customer IDs,
+  non-positive or missing quantity/price, their overlap and union, cancellations,
+  exact duplicates, and shared (invoice, stock_code) pairs.
+
+out/sample_comparison.csv
+  Population vs. 20% development sample proportions (47 rows) for country,
+  is_cancellation, and flag_missing_customer.
+
+out/benchmark.csv
+  One timed run each of Analysis 1 in PySpark (local mode) and DuckDB (2 rows), with
+  environment, input size, elapsed time, output rows, and whether the results matched.
+
+Not committed (generated locally): the prepared Parquet folder, the development sample
+Parquet folder, and the Spark JVM log.
+
+Notes
+- The CSV files in out/ and the numbers in the report come from a full-data run.
+- Running the notebook on the committed sample writes to out/sample_run/ and gives
+  different counts.

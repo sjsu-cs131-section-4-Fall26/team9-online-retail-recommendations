@@ -6,3 +6,4 @@ pandas>=2.2,<3   # PySpark 4 does not fully support pandas 3 yet
 pyarrow>=15
 ipykernel
 notebook
+matplotlib>=3.8
