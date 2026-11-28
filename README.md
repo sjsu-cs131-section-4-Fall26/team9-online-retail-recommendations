@@ -14,9 +14,12 @@ This repository contains the UNIX exploration and SED/AWK cleaning pipelines for
 │   └── samples/online_retail_sample.tsv     # 1,000-record sample (PA2)
 ├── reports/                       # Data card, PA2 report, PM updates, guides, checklist
 └── pa3/
+    ├── README.md                  # PA3 run instructions, handoff table, AI-use disclosure
+    ├── submission_summary.txt     # List of every submitted PA3 file
     ├── requirements.txt           # Python packages for the PA3 notebook
     ├── notebooks/pa3_pyspark.ipynb
     ├── data/sample/online_retail_sample.tsv # 1,000-record sample for PA3 test runs
+    ├── docs/technical_report.pdf  # PA3 technical report
     └── out/                       # PA3 result CSVs
 ```
 
@@ -111,7 +114,7 @@ with PySpark, writes prepared Parquet, runs two analyses, checks Analysis 1 agai
 - Python 3.12
 - Java 17 or 21 (Spark 4 does not support newer Java versions)
 - The packages in [`pa3/requirements.txt`](pa3/requirements.txt): PySpark, DuckDB, pandas (below 3.0), PyArrow,
-  ipykernel, and Jupyter Notebook
+  Matplotlib, ipykernel, and Jupyter Notebook
 
 ### Setup
 
@@ -198,6 +201,9 @@ of CPU cores, so its row count can differ slightly between machines; every other
 - [PM Board Updates](reports/PM_BOARD_UPDATES.md)
 - [Start Here Guide](reports/START_HERE.md)
 - [Submission Checklist](reports/SUBMISSION_CHECKLIST.md)
+- [PA3 README](pa3/README.md)
+- [PA3 Technical Report](pa3/docs/technical_report.pdf)
+- [PA3 Submission Summary](pa3/submission_summary.txt)
 
 ## Team
 
